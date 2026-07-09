@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eFootball Coins Top-Up</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1e3c72;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      color: black;
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+    h2 { color: #1e3c72; }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover { background: #1da851; }
+    .note { font-size: 12px; color: #666; margin-top: 15px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>⚽ eFootball Coins Top-Up</h2>
+    <p>Enter your Konami ID and card serial number to receive your Coins instantly.</p>
+    
+    <input type="text" id="konamiId" placeholder="Konami ID (9 digits)" maxlength="9" inputmode="numeric">
+    <input type="text" id="serial" placeholder="Card Serial Number">
+    
+    <button onclick="openWhatsApp()">📱 Send via WhatsApp</button>
+    
+    <p class="note">You will be redirected to WhatsApp. Press send, and we'll top up your account within minutes.</p>
+  </div>
+
+  <script>
+    function openWhatsApp() {
+      const konamiId = document.getElementById('konamiId').value.trim();
+      const serial = document.getElementById('serial').value.trim();
+      
+      if (!konamiId || !serial) {
+        alert('Please fill in both the Konami ID and the serial number.');
+        return;
+      }
+
+      // ⚠️ REPLACE THIS NUMBER with your WhatsApp number (no +, no spaces)
+      const yourWhatsAppNumber = '254710844194';
+      
+      const message = `New top-up request:%0A%0A*Serial:* ${serial}%0A*Konami ID:* ${konamiId}%0A%0APlease top up 137 Coins.`;
+      const url = `https://wa.me/${yourWhatsAppNumber}?text=${message}`;
+      
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
